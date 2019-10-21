@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game X-O</title>
+</head>
+<body>
+<h1>The X-O Game</h1>
+<button>Reset</button>
+<div class="grid-container">
+	<div class="grid item1"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item2"><div class="xo"></div><div class="x2-container-"></div></div>
+	<div class="grid item3"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item4"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item5"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item6"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item7"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item8"><div class="xo"></div><div class="x2-container"></div></div>
+	<div class="grid item9"><div class="xo"></div><div class="x2-container"></div></div>
+</div>
+</body>
+</html>
+<style>
+h1{
+	text-align: center;
+}
+.grid-container{
+	margin: auto;
+	width: 400px;
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: auto auto auto;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	background: #2196F3;
+	padding: 50px;
+	justify-content: center;
+}
+.grid{
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background: #6B8E23;
+	border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.xo{
+	width: 100%;
+	height: 100%;
+}
+.x1{
+	top: 50%;
+	width: 100%;
+	height: 10px;
+	background: #000;
+	position: absolute;
+	transform-origin: 50%;
+	transform: rotate(45deg);
+}
+/*.x2-container{
+	width: 100%;
+	height: 100%;
+}*/
+.x2{
+	opacity: 1;
+	top: 50%;
+	width: 100%;
+	height: 10px;
+	background: #000;
+	position: absolute;
+	transform-origin: 50%;
+	transform: rotate(-45deg);
+}
+.o{
+	top: 5%;
+	left: 5%;
+	width: 70%;
+	height: 70%;
+	background: #6B8E23;
+	border:10px solid #000;
+	border-radius: 50%;
+	position: absolute;
+}
+</style>
+<script>
+	// const grid = document.querySelectorAll('.grid');
+	const xos = document.querySelectorAll('.xo');
+	const reset = document.querySelector('button');
+	const h1 = document.querySelector('h1');
+	// const x2 = document.querySelectorAll('.x2-container');
+	let count = 0;
+
+	// function handleWinner(){
+	// 	console.log(this);
+
+	// 	//x-xis
+	// 	for(i=0;i<xos.length;i+3){
+	// 		if(xos[i].classList.contains('x1')&&xos[i+1].classList.contains('x1')&&xos[i+2].classList.contains('x1')){
+	// 			h1.innerHTML = `X is the winner!!!`;
+	// 		}
+	// 	}
+
+	// 	//y-xis
+	// 	for(i=0;i<3;i++){
+	// 		if(xos[i].classList.contains('x1')&&xos[i+3].classList.contains('x1')&&xos[i+6].classList.contains('x1'))
+	// 	}
+	// 	if (xos[1].classList.contains('x1')&&xos[xos.length/2+1].classList.contains('x1')) {}
+	// }
+
+
+	function handle(){
+		count++;
+		if(count % 2 == 1 ){
+			this.classList.add('x1');
+			this.innerHTML = '<div class = "x2"></div>';
+			this.classList.remove('o');
+		}
+		else{
+			this.classList.add('o');
+			this.classList.remove('x1');
+			this.innerHTML = '';
+		}
+	}
+	// function handle2(e){
+	// 	if(count % 2 == 1 ){
+	// 		this.classList.add('x2');
+	// 		this.classList.remove('o');
+	// 	}
+	// }
+	function handleReset(){
+		xos.forEach(xo=>{
+			xo.classList.remove('x1');
+			xo.classList.remove('o');
+			xo.innerHTML = '';
+		});
+
+	}
+	xos.forEach(xo=>xo.addEventListener('click',handle));
+	reset.addEventListener('click',handleReset);
+	// xos.forEach(xo=>xo.addEventListener('click',handleWinner));
+	// x2.forEach(x2=>x2.addEventListener('click',handle2));
+</script>

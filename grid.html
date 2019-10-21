@@ -1,0 +1,77 @@
+<style>
+	.grid-container{
+		display: grid;
+		grid-gap: 5px;
+		grid-template-rows: repeat(3,1 fr);
+		/*grid-template-columns: 1fr 1fr 1fr;*/
+		/*grid-template-rows: 1fr 1fr;*/
+	}
+	.grid-item{
+		width: 100px;
+		height: 30px;
+		background: aqua;
+		border: 1px solid #000;
+	}
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grid</title>
+</head>
+<body>
+	<input id="n" type="number" name="n" width="100px">
+	<input id="m" type="number" name="m" width="100px">
+	<input id="submit" type="submit" name="submit">
+	<div class="grid-container"></div>
+</body>
+</html>
+<script>
+	const n = document.querySelector('#n');
+	const m = document.querySelector('#m');
+	const gridContainer = document.querySelector('.grid-container');
+	const gridItems = document.querySelectorAll('.grid-item');
+		
+
+	function  handleSort(){
+		let cellNumber  = m.value*n.value;
+		let cellSort=[];
+		let columnSort=[];
+		console.log(gridItems.dataset.key.value);
+		for(i=0;i<m.value;i++){
+			for(j=0;i<cellNumber;j+m.value){
+				
+			}
+		}
+
+	}
+
+	function handleHeader(){
+		for(i=0;i<m.value;i++){
+	 		gridContainer.innerHTML += `<div class='grid-item' onclick="handleSort">${i+1}</div>`;
+	 		gridContainer.style.gridTemplateColumns = `repeat(${m.value},1fr)`;
+		}
+	}
+
+	 function handleSumit(e) {
+		let cellNumber  = m.value*n.value;
+	 	for( i = 0;i<cellNumber;i++){
+	 		
+	 		// if (i==index*(n.value+1)){
+	 		// 	index++;
+	 		// 	gridContainer.innerHTML += `<div class='grid-item'>${index}</div>`;
+	 		// }
+
+	 		// var node = document.createElement("div");
+	 		// // node.innerHTML = "Hello";
+	 		// var textnode = document.createTextNode(Math.round(Math.random()*1000)); 
+	 		// node.appendChild(textnode);
+	 		// gridContainer.appendChild(node);
+	 		gridContainer.innerHTML += `<div data-key="${i+1}" class='grid-item'>${(Math.round(Math.random()*1000))}</div>`;
+	 		gridContainer.style.gridTemplateColumns = `repeat(${m.value},1fr)`;
+	 	}
+	 }
+
+	submit.addEventListener('click',handleSumit);
+	m.addEventListener('change',handleHeader);
+
+</script>
